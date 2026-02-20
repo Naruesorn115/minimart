@@ -1,4 +1,4 @@
-﻿namespace minimart
+﻿namespace Minimart
 {
     partial class Form1
     {
@@ -28,12 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            dgvProducts = new DataGridView();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvProducts
+            // 
+            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducts.Location = new Point(28, 32);
+            dgvProducts.Margin = new Padding(4);
+            dgvProducts.Name = "dgvProducts";
+            dgvProducts.RowHeadersWidth = 51;
+            dgvProducts.Size = new Size(982, 358);
+            dgvProducts.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(28, 408);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(982, 188);
+            dataGridView1.TabIndex = 3;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Text = "Form1";
+            ClientSize = new Size(1034, 624);
+            Controls.Add(dataGridView1);
+            Controls.Add(dgvProducts);
+            Font = new Font("Segoe UI", 12F);
+            Margin = new Padding(4);
+            Name = "Form1";
+            Text = "แสดงข้อมูลจาก Minimart";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dgvProducts;
+        private DataGridView dataGridView1;
     }
 }
