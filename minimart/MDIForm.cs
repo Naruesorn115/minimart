@@ -88,5 +88,12 @@
             fPOS.MdiParent = this;
             fPOS.Show();
         }
+
+        private void เปดฟอรมfrmEditProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEditProducts fEP = new frmEditProducts();
+            fEP.MdiParent = this;
+            fEP.Show();
+        }
     }
 }
