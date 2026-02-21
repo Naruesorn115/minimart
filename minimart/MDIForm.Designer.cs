@@ -188,6 +188,7 @@ namespace Minimart
             mnuPOS.Name = "mnuPOS";
             mnuPOS.Size = new Size(170, 24);
             mnuPOS.Text = "จำหน่ายสินค้า(mnuPOS)";
+            mnuPOS.Click += mnuPOS_Click;
             // 
             // mnuLogout
             // 

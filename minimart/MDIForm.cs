@@ -203,6 +203,30 @@
         {
             ShowMenuStart();
         }
+
+        private void mnuPOS_Click(object sender, EventArgs e)
+        {
+            // ตรวจสอบว่ามีหน้าจอนี้เปิดอยู่แล้วหรือไม่ เพื่อป้องกันการเปิดซ้ำซ้อน
+            foreach (Form child in this.MdiChildren)
+            {
+                if (child is frmPOS)
+                {
+                    child.Activate();
+                    return;
+                }
+            }
+
+            // สร้าง Instance ใหม่ของ frmPOS
+            frmPOS f = new frmPOS();
+            f.MdiParent = this; // กำหนดให้ MDIForm นี้เป็นแม่
+
+            // ส่งค่าข้อมูลพนักงานที่ Login อยู่ไปยังหน้า POS
+            f.empID = this.employeeID;
+            f.empName = this.employeeName;
+            f.position = this.position;
+
+            f.Show();
+        }
     }
 }
 
