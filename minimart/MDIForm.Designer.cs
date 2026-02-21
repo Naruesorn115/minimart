@@ -41,12 +41,16 @@ namespace Minimart
             mnuNomalF = new ToolStripMenuItem();
             mnuCloseF = new ToolStripMenuItem();
             mnuCloseAllF = new ToolStripMenuItem();
-            mnuFA = new ToolStripMenuItem();
-            mnuFB = new ToolStripMenuItem();
-            mnuFC = new ToolStripMenuItem();
-            mnuP = new ToolStripMenuItem();
-            เปดฟอรมfrmEditProductsToolStripMenuItem = new ToolStripMenuItem();
-            เปดฟอรมfrmPOSToolStripMenuItem = new ToolStripMenuItem();
+            mnuCRUD = new ToolStripMenuItem();
+            mnuProducts = new ToolStripMenuItem();
+            mnuEmployees = new ToolStripMenuItem();
+            mnuCategory = new ToolStripMenuItem();
+            mnuReport = new ToolStripMenuItem();
+            nmufrmProduct_by_Category = new ToolStripMenuItem();
+            nmufrmEmployees_sales = new ToolStripMenuItem();
+            mnuPOS = new ToolStripMenuItem();
+            mnuLogout = new ToolStripMenuItem();
+            mnuLogin = new ToolStripMenuItem();
             mnuArrangeF = new ToolStripMenuItem();
             mnuVertical = new ToolStripMenuItem();
             mnuHorizontal = new ToolStripMenuItem();
@@ -56,15 +60,17 @@ namespace Minimart
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuF, mnuFA, mnuFB, mnuFC, mnuP, เปดฟอรมfrmEditProductsToolStripMenuItem, เปดฟอรมfrmPOSToolStripMenuItem, mnuArrangeF });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuF, mnuCRUD, mnuReport, mnuPOS, mnuLogout, mnuLogin, mnuArrangeF });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1220, 28);
+            menuStrip1.Size = new Size(1525, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // mnuF
             // 
+            mnuF.BackColor = Color.Blue;
             mnuF.DropDownItems.AddRange(new ToolStripItem[] { mnuMax, toolStripMenuItem1, mnuMin, toolStripMenuItem2, mnuExit, toolStripMenuItem3, mnuNomalF, mnuCloseF, mnuCloseAllF });
             mnuF.Name = "mnuF";
             mnuF.Size = new Size(55, 24);
@@ -127,50 +133,79 @@ namespace Minimart
             mnuCloseAllF.Text = "ปิดฟอร์มทั้งหมด(Close All)";
             mnuCloseAllF.Click += mnuCloseAllF_Click;
             // 
-            // mnuFA
+            // mnuCRUD
             // 
-            mnuFA.Name = "mnuFA";
-            mnuFA.Size = new Size(119, 24);
-            mnuFA.Text = "เปิดฟอร์มForm1";
-            mnuFA.Click += mnuFA_Click;
+            mnuCRUD.DropDownItems.AddRange(new ToolStripItem[] { mnuProducts, mnuEmployees, mnuCategory });
+            mnuCRUD.Name = "mnuCRUD";
+            mnuCRUD.Size = new Size(206, 24);
+            mnuCRUD.Text = "จัดการข้อมูลสินค้า(mnuCRUD)";
+            mnuCRUD.Click += จดการขอมลสนคาmnuCRUDToolStripMenuItem_Click;
             // 
-            // mnuFB
+            // mnuProducts
             // 
-            mnuFB.Name = "mnuFB";
-            mnuFB.Size = new Size(160, 24);
-            mnuFB.Text = "เปิดฟอร์มfrmCategory";
-            mnuFB.Click += mnuFB_Click;
+            mnuProducts.Name = "mnuProducts";
+            mnuProducts.Size = new Size(239, 26);
+            mnuProducts.Text = "จัดการข้อมูลสินค้า";
+            mnuProducts.Click += mnuProducts_Click;
             // 
-            // mnuFC
+            // mnuEmployees
             // 
-            mnuFC.Name = "mnuFC";
-            mnuFC.Size = new Size(186, 24);
-            mnuFC.Text = "เปิดฟอร์มfrmEditCategory";
-            mnuFC.Click += mnuFC_Click;
+            mnuEmployees.Name = "mnuEmployees";
+            mnuEmployees.Size = new Size(239, 26);
+            mnuEmployees.Text = "จัดการข้อมูลพนักงาน";
+            mnuEmployees.Click += mnuEmployees_Click;
             // 
-            // mnuP
+            // mnuCategory
             // 
-            mnuP.Name = "mnuP";
-            mnuP.Size = new Size(157, 24);
-            mnuP.Text = "เปิดฟอร์มfrmProducts";
-            mnuP.Click += เปดToolStripMenuItem_Click;
+            mnuCategory.Name = "mnuCategory";
+            mnuCategory.Size = new Size(239, 26);
+            mnuCategory.Text = "จัดการข้อมูลประเภทสิ้นค้า";
+            mnuCategory.Click += mnuCategory_Click;
             // 
-            // เปดฟอรมfrmEditProductsToolStripMenuItem
+            // mnuReport
             // 
-            เปดฟอรมfrmEditProductsToolStripMenuItem.Name = "เปดฟอรมfrmEditProductsToolStripMenuItem";
-            เปดฟอรมfrmEditProductsToolStripMenuItem.Size = new Size(183, 24);
-            เปดฟอรมfrmEditProductsToolStripMenuItem.Text = "เปิดฟอร์มfrmEditProducts";
-            เปดฟอรมfrmEditProductsToolStripMenuItem.Click += เปดฟอรมfrmEditProductsToolStripMenuItem_Click;
+            mnuReport.DropDownItems.AddRange(new ToolStripItem[] { nmufrmProduct_by_Category, nmufrmEmployees_sales });
+            mnuReport.Name = "mnuReport";
+            mnuReport.Size = new Size(170, 24);
+            mnuReport.Text = "แสดงข้อมูล(mnuReport)";
             // 
-            // เปดฟอรมfrmPOSToolStripMenuItem
+            // nmufrmProduct_by_Category
             // 
-            เปดฟอรมfrmPOSToolStripMenuItem.Name = "เปดฟอรมfrmPOSToolStripMenuItem";
-            เปดฟอรมfrmPOSToolStripMenuItem.Size = new Size(127, 24);
-            เปดฟอรมfrmPOSToolStripMenuItem.Text = "เปิดฟอร์มfrmPOS";
-            เปดฟอรมfrmPOSToolStripMenuItem.Click += เปดฟอรมfrmPOSToolStripMenuItem_Click;
+            nmufrmProduct_by_Category.Name = "nmufrmProduct_by_Category";
+            nmufrmProduct_by_Category.Size = new Size(248, 26);
+            nmufrmProduct_by_Category.Text = "ข้อมูลสินค้าตามประเภท";
+            nmufrmProduct_by_Category.Click += nmufrmProduct_by_Category_Click;
+            // 
+            // nmufrmEmployees_sales
+            // 
+            nmufrmEmployees_sales.Name = "nmufrmEmployees_sales";
+            nmufrmEmployees_sales.Size = new Size(248, 26);
+            nmufrmEmployees_sales.Text = "ขอมูลยอดขายตามพนักงาน";
+            nmufrmEmployees_sales.Click += nmufrmEmployees_sales_Click;
+            // 
+            // mnuPOS
+            // 
+            mnuPOS.Name = "mnuPOS";
+            mnuPOS.Size = new Size(170, 24);
+            mnuPOS.Text = "จำหน่ายสินค้า(mnuPOS)";
+            // 
+            // mnuLogout
+            // 
+            mnuLogout.Name = "mnuLogout";
+            mnuLogout.Size = new Size(187, 24);
+            mnuLogout.Text = "ออกจากระบบ(mnuLogout)";
+            mnuLogout.Click += mnuLogout_Click;
+            // 
+            // mnuLogin
+            // 
+            mnuLogin.Name = "mnuLogin";
+            mnuLogin.Size = new Size(156, 24);
+            mnuLogin.Text = "เข้าสู่ระบบ(mnuLogin)";
+            mnuLogin.Click += mnuLogin_Click;
             // 
             // mnuArrangeF
             // 
+            mnuArrangeF.BackColor = Color.Blue;
             mnuArrangeF.DropDownItems.AddRange(new ToolStripItem[] { mnuVertical, mnuHorizontal });
             mnuArrangeF.Name = "mnuArrangeF";
             mnuArrangeF.Size = new Size(96, 24);
@@ -194,12 +229,13 @@ namespace Minimart
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1220, 608);
+            ClientSize = new Size(1525, 608);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "MDIForm";
-            Text = "เลือกฟอร์ม";
+            Text = "ระบบงานร้านค้าขนาดเล็ก";
+            Load += MDIForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -214,9 +250,6 @@ namespace Minimart
         private ToolStripMenuItem mnuMin;
         private ToolStripMenuItem mnuExit;
         private ToolStripSeparator toolStripMenuItem1;
-        private ToolStripMenuItem mnuFA;
-        private ToolStripMenuItem mnuFB;
-        private ToolStripMenuItem mnuFC;
         private ToolStripSeparator toolStripMenuItem2;
         private ToolStripSeparator toolStripMenuItem3;
         private ToolStripMenuItem mnuArrangeF;
@@ -225,8 +258,15 @@ namespace Minimart
         private ToolStripMenuItem mnuNomalF;
         private ToolStripMenuItem mnuCloseF;
         private ToolStripMenuItem mnuCloseAllF;
-        private ToolStripMenuItem mnuP;
-        private ToolStripMenuItem เปดฟอรมfrmPOSToolStripMenuItem;
-        private ToolStripMenuItem เปดฟอรมfrmEditProductsToolStripMenuItem;
+        private ToolStripMenuItem mnuCRUD;
+        private ToolStripMenuItem mnuProducts;
+        private ToolStripMenuItem mnuEmployees;
+        private ToolStripMenuItem mnuCategory;
+        private ToolStripMenuItem mnuReport;
+        private ToolStripMenuItem nmufrmProduct_by_Category;
+        private ToolStripMenuItem nmufrmEmployees_sales;
+        private ToolStripMenuItem mnuPOS;
+        private ToolStripMenuItem mnuLogout;
+        private ToolStripMenuItem mnuLogin;
     }
 }

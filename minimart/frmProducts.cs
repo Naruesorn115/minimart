@@ -106,20 +106,19 @@ namespace Minimart
             discontinued = Convert.ToInt16(dgvProducts.CurrentRow.Cells[6].Value);
 
             frmEditProducts f = new frmEditProducts();
+            // ส่งค่าผ่าน Property (ต้องมั่นใจว่าใน frmEditProducts มี Property เหล่านี้)
             f.productID = productID;
             f.productName = productName;
             f.unitPrice = unitPrice;
             f.unitsInStock = unitsInStock;
             f.categoryID = categoryID;
-            f.categoryName = categoryName;
-            f.discontinued = discontinued;
-            f.status = "update";
-            f.ShowDialog();
+            f.status = "update"; // บอกฟอร์มลูกว่าให้ทำงานโหมดแก้ไข
 
-            string sql = "Select productID, productName, UnitPrice, UnitsInStock, "
-                        + " p.CategoryID, CategoryName, Discontinued"
-                        + " from products p inner join Categories c on p.CategoryID = c.CategoryID";
-            showdata(sql, dgvProducts);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                // เมื่อปิดฟอร์มแก้ไข ให้โหลดข้อมูลใหม่
+                frmProducts_Load(sender, e);
+            }
 
         }
     }

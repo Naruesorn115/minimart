@@ -47,26 +47,28 @@ namespace Minimart
 
         private void frmEditProducts_Load(object sender, EventArgs e)
         {
-            //เชื่อมต่อฐานข้อมูล
             conn = connectDB.ConnectMinimart();
-            setCbo();
-            //นำข้อมูลที่ถูกส่งมาไปแสดงผลในฟอร์ม
-            txtProductID.Text = productID;
-            txtProductName.Text = productName;
-            txtUnitPrice.Text = unitPrice.ToString();
-            txtUnitsInStock.Text = unitsInStock.ToString();
-            cboCategory.SelectedValue = categoryID;     //กำหนดให้ ComboBox แสดงผล
-            if (discontinued == 1)
-            {
-                radDiscontinued.Checked = true;
-            }
-            else
-            {
-                radContinued.Checked = true;
-            }
 
+            // โหลดข้อมูลใส่ ComboBox
+            string sql = "SELECT CategoryID, CategoryName FROM Categories";
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            cboCategory.DataSource = dt;
+            cboCategory.DisplayMember = "CategoryName";
+            cboCategory.ValueMember = "CategoryID";
+
+            // ถ้าเป็นโหมดแก้ไข ให้แสดงค่าเดิม
+            if (status == "update")
+            {
+                txtProductID.Text = productID;
+                txtProductID.ReadOnly = true; // ห้ามแก้รหัส PK
+                txtProductName.Text = productName;
+                txtUnitPrice.Text = unitPrice.ToString();
+                txtUnitsInStock.Text = unitsInStock.ToString();
+                cboCategory.SelectedValue = categoryID;
+            }
         }
-
         private void setCbo()
         {
             string sql = "Select CategoryID,CategoryName from Categories";
